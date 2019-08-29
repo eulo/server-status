@@ -1,17 +1,28 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+  </head>
+  <style>
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      color: #fff;
+    }
+  </style>
   <body>
-    <h1>WoW Server Status</h1>
-
+    <h1></h1>
     <script>
-      fetch("https://worldofwarcraft.com/graphql", { 
-        "credentials":"omit",
-        "headers":{"accept":"*/*","accept-language":"en-US","content-type":"application/json","sec-fetch-mode":"cors","sec-fetch-site":"same-origin","x-static":"false"},
-        "referrer":"https://worldofwarcraft.com/en-us/game/status/classic-us",
-        "referrerPolicy":"no-referrer-when-downgrade",
-        "body":"{\"operationName\":\"GetInitialRealmStatusData\",\"variables\":{\"input\":{\"compoundRegionGameVersionSlug\":\"classic-us\"}},\"extensions\":{\"persistedQuery\":{\"version\":1,\"sha256Hash\":\"7b3ba73c1458c52eec129aaf0c64d8be62f5496754f1143f8147da317fdd2417\"}}}",
-        "method":"POST",
-        "mode":"no-cors"
-      }).then((data) => console.log(data));
+      fetch("https://api.codedrips.com/wow/")
+        .then(data => data.json())
+        .then(json => {
+          let server = json.data.Realms[33]
+          let color = server.online ? 'green' : 'red'
+          document.querySelector('h1').innerHTML = `<span style="color: ${color}">${server.name} is ${server.online ? 'up' : 'down'}</span>`
+        })
     </script>
   </body>
 </html>
