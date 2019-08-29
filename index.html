@@ -3,8 +3,15 @@
     <h1>WoW Server Status</h1>
 
     <script>
-      fetch("https://worldofwarcraft.com/graphql", {"credentials":"omit","headers":{"accept":"*/*","accept-language":"en-US","content-type":"application/json","sec-fetch-mode":"cors","sec-fetch-site":"same-origin","x-static":"false"},"referrer":"https://worldofwarcraft.com/en-us/game/status/classic-us","referrerPolicy":"no-referrer-when-downgrade","body":"{\"operationName\":\"GetInitialRealmStatusData\",\"variables\":{\"input\":{\"compoundRegionGameVersionSlug\":\"classic-us\"}},\"extensions\":{\"persistedQuery\":{\"version\":1,\"sha256Hash\":\"7b3ba73c1458c52eec129aaf0c64d8be62f5496754f1143f8147da317fdd2417\"}}}","method":"POST","mode":"cors"})
-      .then((data) => console.log(data));
+      fetch("https://worldofwarcraft.com/graphql", { 
+        "credentials":"omit",
+        "headers":{"accept":"*/*","accept-language":"en-US","content-type":"application/json","sec-fetch-mode":"cors","sec-fetch-site":"same-origin","x-static":"false"},
+        "referrer":"https://worldofwarcraft.com/en-us/game/status/classic-us",
+        "referrerPolicy":"no-referrer-when-downgrade",
+        "body":"{\"operationName\":\"GetInitialRealmStatusData\",\"variables\":{\"input\":{\"compoundRegionGameVersionSlug\":\"classic-us\"}},\"extensions\":{\"persistedQuery\":{\"version\":1,\"sha256Hash\":\"7b3ba73c1458c52eec129aaf0c64d8be62f5496754f1143f8147da317fdd2417\"}}}",
+        "method":"POST",
+        "mode":"no-cors"
+      }).then((data) => console.log(data));
     </script>
   </body>
 </html>
