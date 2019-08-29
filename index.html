@@ -19,7 +19,7 @@
       fetch("https://api.codedrips.com/wow/")
         .then(data => data.json())
         .then(json => {
-          let server = json.data.Realms[33]
+          let server = json.data.Realms.find((el, i) => el.slug === 'yojamba') 
           let color = server.online ? 'green' : 'red'
           document.querySelector('h1').innerHTML = `<span style="color: ${color}">${server.name} is ${server.online ? 'up' : 'down'}</span>`
         })
